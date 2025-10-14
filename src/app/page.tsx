@@ -3,13 +3,14 @@
 import Image from "next/image";
 import ProfileDropdown from "./components/ProfileDropdown";
 import { User } from "./types/user";
+import { ROLES } from "./types/role";
 
 export default function Home() {
   // Hard-coded current user
   const currentUser: User = {
     id: 1,
     name: "Alice Allspice",
-    role: "admin",
+    role: ROLES.ADMIN,
     avatar: "https://picsum.photos/200?random=1"
   };
 
