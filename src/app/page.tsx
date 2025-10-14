@@ -13,10 +13,10 @@ export default function Home() {
     avatar: "https://picsum.photos/200?random=1"
   };
 
-  fetch("/api/users")
+  fetch("/api/roles")
     .then((res) => res.json())
     .then((data) => {
-      console.log("Users API is Available", data)
+      console.log("Roles API is Available", data)
     })
 
   return (
