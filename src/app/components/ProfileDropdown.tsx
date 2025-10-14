@@ -1,13 +1,11 @@
 import Image from "next/image";
 import { User } from "../types/user";
-import DropdownMenu from "./DropdownMenu";
 
 type ProfileDropdownProps = {
   currentUser: User;
-  users: User[];
 };
 
-export default function ProfileDropdown({ currentUser, users }: ProfileDropdownProps) {
+export default function ProfileDropdown({ currentUser }: ProfileDropdownProps) {
   return (
     <div className="relative">
       <button

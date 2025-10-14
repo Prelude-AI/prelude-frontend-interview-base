@@ -13,12 +13,11 @@ export default function Home() {
     avatar: "https://picsum.photos/200?random=1"
   };
 
-  // Hard-coded users array
-  const users: User[] = [
-    { id: 1, name: "Alice Allspice", role: "admin", avatar: "https://picsum.photos/200?random=1" },
-    { id: 2, name: "Bob Basil", role: "advisor", avatar: "https://picsum.photos/200?random=2" },
-    { id: 3, name: "Charlie Cinnamon", role: "assistant", avatar: "https://picsum.photos/200?random=3" },
-  ];
+  fetch("/api/users")
+    .then((res) => res.json())
+    .then((data) => {
+      console.log("Users API is Available", data)
+    })
 
   return (
     <div className="font-sans min-h-screen p-8">
@@ -32,7 +31,7 @@ export default function Home() {
           priority
         />
         
-        <ProfileDropdown currentUser={currentUser} users={users} />
+        <ProfileDropdown currentUser={currentUser} />
       </header>
 
       {/* Main Content */}
