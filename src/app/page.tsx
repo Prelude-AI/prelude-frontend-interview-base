@@ -1,31 +1,49 @@
+"use client";
+
 import Image from "next/image";
+import ProfileDropdown from "./components/ProfileDropdown";
+import { User } from "./types/user";
 
 export default function Home() {
+  // Hard-coded current user
+  const currentUser: User = {
+    id: 1,
+    name: "Alice Allspice",
+    role: "admin",
+    avatar: "https://picsum.photos/200?random=1"
+  };
+
+  // Hard-coded users array
+  const users: User[] = [
+    { id: 1, name: "Alice Allspice", role: "admin", avatar: "https://picsum.photos/200?random=1" },
+    { id: 2, name: "Bob Basil", role: "advisor", avatar: "https://picsum.photos/200?random=2" },
+    { id: 3, name: "Charlie Cinnamon", role: "assistant", avatar: "https://picsum.photos/200?random=3" },
+  ];
+
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
+    <div className="font-sans min-h-screen p-8">
+      {/* Header with logo and profile */}
+      <header className="flex justify-between items-center mb-16">
         <Image
           src="/prelude.png"
           alt="Prelude.ai logo"
-          width={180}
-          height={38}
+          width={150}
+          height={32}
           priority
         />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+        
+        <ProfileDropdown currentUser={currentUser} users={users} />
+      </header>
+
+      {/* Main Content */}
+      <main className="flex flex-col items-center justify-center mt-32">
+        <h1 className="text-4xl font-bold text-center">
+          Welcome {currentUser.name} to Prelude.
+        </h1>
+        <p className="mt-4 text-gray-600 dark:text-gray-400 text-center">
+          Current Role: <span className="font-semibold">{currentUser.role}</span>
+        </p>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-      </footer>
     </div>
   );
 }
